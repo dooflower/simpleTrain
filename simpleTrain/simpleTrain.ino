@@ -14,15 +14,22 @@ int whereAmI = stationA;
 #define BRsensor 4
 
 //Wall Detection IR Sensor Pins
-#define FwallSensor 11
-#define BwallSensor 12
+#define FwallSensor 12
+#define BwallSensor 13
 
 //Motor Control Pins Forward/Backward 9, Left/Right 10
-#define motorControlFB 9
-#define motorControlLR 10
+#define motorControlFB 9 //for joystick A&C
+#define motorControlLR 10 //for joystick D
+#define midVoltagePin 11 //constant 2.4 v for joystick B
+
 
 #define pwm1v 51
 #define pwm4v 204
+#define lowerTrigger 113
+#define higherTrigger 148
+#define midTrigger 130 
+
+
  
 
 int stopTimer = 3000;
@@ -34,8 +41,14 @@ void setup() {
   pinMode(BRsensor, INPUT);
   pinMode(FwallSensor, INPUT);
   pinMode(BwallSensor, INPUT);
+  pinMode(motorControlFB, OUTPUT);
+  pinMode(motorControlLR, OUTPUT);
+  pinMode(midVoltagePin, OUTPUT);
+  analogWrite(midVoltagePin,midTrigger);
 
   Serial.begin(9600);
+
+  
 }
 
 void loop() {

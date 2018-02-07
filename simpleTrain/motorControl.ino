@@ -3,6 +3,8 @@ void stopMotors(){
    * 
    */
    Serial.println("motor stop");
+   analogWrite(motorControlFB, midTrigger);
+   analogWrite(motorControlLR, midTrigger);
 }
 
 void turnForwardLeft(){
@@ -10,8 +12,8 @@ void turnForwardLeft(){
    * 1v
    */
    Serial.println("forward left");
-   analogWrite(motorControlFB, pwm4v)
-   analogWrite(motorControlLR, pwm1v)
+   analogWrite(motorControlFB, lowerTrigger);
+   analogWrite(motorControlLR, lowerTrigger);
 
 }
 
@@ -20,7 +22,8 @@ void turnForwardRight(){
    * 4v
    */
   Serial.println("forward right");
-
+   analogWrite(motorControlFB, lowerTrigger);
+   analogWrite(motorControlLR, higherTrigger);
 }
 
 
@@ -29,7 +32,8 @@ void goForward(){
    * 2.38v
    */
   Serial.println("forward");
-
+   analogWrite(motorControlFB, lowerTrigger);
+   analogWrite(motorControlLR, midTrigger);
 }
 
 void turnBackwardLeft(){
@@ -37,6 +41,8 @@ void turnBackwardLeft(){
    * 
    */
    Serial.println("backward left");
+   analogWrite(motorControlFB, higherTrigger);
+   analogWrite(motorControlLR, lowerTrigger);
 }
 
 void turnBackwardRight(){
@@ -44,7 +50,8 @@ void turnBackwardRight(){
    * 
    */
   Serial.println("backward right");
-
+   analogWrite(motorControlFB, higherTrigger);
+   analogWrite(motorControlLR, higherTrigger);
 }
 
 
@@ -53,5 +60,7 @@ void goBackward(){
    * 
    */
   Serial.println("backward");
+   analogWrite(motorControlFB, higherTrigger);
+   analogWrite(motorControlLR, midTrigger);
 
 }

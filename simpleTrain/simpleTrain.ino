@@ -15,16 +15,16 @@ int whereAmI = stationA;
 
 //Wall Detection IR Sensor Pins
 #define FwallSensor 12
-#define BwallSensor 13
+#define BwallSensor 8
 
 //Motor Control Pins Forward/Backward 9, Left/Right 10
 #define motorControlFB 9 //for joystick A&C
 #define motorControlLR 10 //for joystick D
 #define midVoltagePin 11 //constant 2.4 v for joystick B
 
-
 #define pwm1v 51
 #define pwm4v 204
+
 #define forwardSpeed 113
 #define backwardSpeed 160
 #define stopSpeed 130

@@ -10,8 +10,8 @@ int whereAmI = stationA;
 //Sensor Pins, "Back"is where the wheels are
 #define FLsensor 5
 #define FRsensor 7
-#define BLsensor 2
-#define BRsensor 4
+#define BLsensor 4
+#define BRsensor 2
 
 //Wall Detection IR Sensor Pins
 #define FwallSensor 12
@@ -25,11 +25,19 @@ int whereAmI = stationA;
 
 #define pwm1v 51
 #define pwm4v 204
-#define lowerTrigger 113
-#define higherTrigger 148
-#define midTrigger 130 
+#define forwardSpeed 113
+#define backwardSpeed 160
+#define stopSpeed 130
 
+#define forwardCenter 130
+//adjust the sensivity of the turning below: the bigger the number the more senstive it is
+#define forwardLeft 30  
+#define forwardRight 30
 
+#define backwardCenter 142
+//adjust the sensivity of the turning below: the bigger the number the more senstive it is
+#define backwardLeft 31
+#define backwardRight 31
  
 
 int stopTimer = 3000;
@@ -44,11 +52,12 @@ void setup() {
   pinMode(motorControlFB, OUTPUT);
   pinMode(motorControlLR, OUTPUT);
   pinMode(midVoltagePin, OUTPUT);
-  analogWrite(midVoltagePin,midTrigger);
+  analogWrite(midVoltagePin,stopSpeed);
 
   Serial.begin(9600);
 
-  
+  stopAndWait();
+
 }
 
 void loop() {
@@ -87,6 +96,7 @@ void loop() {
       } 
     break; 
   }
+
 }
 
 
@@ -105,10 +115,13 @@ void followLineForward(){
   boolean right = !digitalRead(FRsensor);
   
  if(left&&right){
+    Serial.println("both sensor triggered, stop!");
     stopMotors();
   }else if(left){
+    Serial.println("left triggered, turn left!");
     turnForwardLeft(); //stop left motor  
   }else if(right){
+    Serial.println("right triggered, turn right!");
     turnForwardRight(); //stop right motor  
   }else{
     goForward();
@@ -121,10 +134,13 @@ void followLineBackward(){
   boolean right = !digitalRead(BRsensor);
   
  if(left&&right){
+    Serial.println("both sensor triggered, stop!");
     stopMotors();
   }else if(left){
+    Serial.println("left triggered, turn left!");
     turnBackwardLeft(); //stop left motor  
   }else if(right){
+    Serial.println("right triggered, turn right!");
     turnBackwardRight(); //stop right motor  
   }else{
     goBackward();

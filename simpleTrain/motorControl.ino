@@ -3,8 +3,8 @@ void stopMotors(){
    * 
    */
    Serial.println("motor stop");
-   analogWrite(motorControlFB, midTrigger);
-   analogWrite(motorControlLR, midTrigger);
+   analogWrite(motorControlFB, stopSpeed);
+   analogWrite(motorControlLR, forwardCenter);
 }
 
 void turnForwardLeft(){
@@ -12,8 +12,8 @@ void turnForwardLeft(){
    * 1v
    */
    Serial.println("forward left");
-   analogWrite(motorControlFB, lowerTrigger);
-   analogWrite(motorControlLR, lowerTrigger);
+   analogWrite(motorControlFB, forwardSpeed);
+   analogWrite(motorControlLR, forwardCenter-forwardLeft);
 
 }
 
@@ -21,9 +21,9 @@ void turnForwardRight(){
   /*INSERT MOTOR CODE  
    * 4v
    */
-  Serial.println("forward right");
-   analogWrite(motorControlFB, lowerTrigger);
-   analogWrite(motorControlLR, higherTrigger);
+//  Serial.println("forward right");
+   analogWrite(motorControlFB, forwardSpeed);
+   analogWrite(motorControlLR, forwardCenter+forwardRight);
 }
 
 
@@ -32,26 +32,28 @@ void goForward(){
    * 2.38v
    */
   Serial.println("forward");
-   analogWrite(motorControlFB, lowerTrigger);
-   analogWrite(motorControlLR, midTrigger);
+   analogWrite(motorControlFB, forwardSpeed);
+   analogWrite(motorControlLR, forwardCenter);
 }
 
 void turnBackwardLeft(){
   /*INSERT MOTOR CODE  
    * 
    */
-   Serial.println("backward left");
-   analogWrite(motorControlFB, higherTrigger);
-   analogWrite(motorControlLR, lowerTrigger);
+//   Serial.println("backward left");
+   analogWrite(motorControlFB, backwardSpeed);
+   analogWrite(motorControlLR, backwardCenter+backwardLeft);
+
 }
 
 void turnBackwardRight(){
   /*INSERT MOTOR CODE  
    * 
    */
-  Serial.println("backward right");
-   analogWrite(motorControlFB, higherTrigger);
-   analogWrite(motorControlLR, higherTrigger);
+//  Serial.println("backward right");
+   analogWrite(motorControlFB, backwardSpeed);
+   analogWrite(motorControlLR, backwardCenter-backwardRight);
+
 }
 
 
@@ -60,7 +62,7 @@ void goBackward(){
    * 
    */
   Serial.println("backward");
-   analogWrite(motorControlFB, higherTrigger);
-   analogWrite(motorControlLR, midTrigger);
+   analogWrite(motorControlFB, backwardSpeed);
+   analogWrite(motorControlLR, backwardCenter);
 
 }

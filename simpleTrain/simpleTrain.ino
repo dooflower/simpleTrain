@@ -25,19 +25,19 @@ int whereAmI = stationA;
 #define pwm1v 51
 #define pwm4v 204
 
-#define forwardSpeed 113
-#define backwardSpeed 160
+#define forwardSpeed 109 // (the lower the faster)
+#define backwardSpeed 160 //(the higher the faster)
 #define stopSpeed 130
 
 #define forwardCenter 130
 //adjust the sensivity of the turning below: the bigger the number the more senstive it is
-#define forwardLeft 30  
-#define forwardRight 30
+#define forwardLeft 32  
+#define forwardRight 32
 
 #define backwardCenter 142
 //adjust the sensivity of the turning below: the bigger the number the more senstive it is
-#define backwardLeft 31
-#define backwardRight 31
+#define backwardLeft 29
+#define backwardRight 29
  
 
 int stopTimer = 3000;
